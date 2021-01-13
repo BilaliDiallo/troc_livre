@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Modification de compte</h1>
+    Remplissez le suivant formulaire et cliquez sur Valider. 
+
+    {{ form_start(registrationForm) }}
+        
+         {{ form_widget(registrationForm) }}
+        <button id="boutton" type="submit" class="btn">Valider</button>
+
+    {{ form_end(registrationForm) }}
+           
+<button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+{% endblock %}

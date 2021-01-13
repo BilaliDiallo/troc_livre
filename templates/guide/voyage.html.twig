@@ -1,0 +1,177 @@
+<div id="ajouterlivre">
+<h1 style="text-align:center;">Voyages</h1>
+Parler de voyage dans une histoire d'échange de livres, semble un peu flou.<br>Mais vous comprendrez avec moi que c'est quand même intéressant.
+
+
+{% if  action == 'guide' %}
+     <div class="isbn">
+        <h3 style="text-align:center;">1. Quel est le rapport entre voyage et échange de livres?</h3> 
+        L'échange est basée en grande partie sur les adresses des utilisateurs.<br>
+        Lorsqu'un utilistateur souhaite recevoir un livre, on regarde parmis tout les utilisateur qui possèdent le livre dans leurs stocks
+        celui qui est plus proche de lui, et l'envoyer la demande. Et ce dans le but de faciliter le processus d'expédition du livre.<br>
+        Mais lorsque vous voyagez, vous changez d'adresse.<br>Voilà le rapport.
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">2. Peut-on faire des échange en étant en voyage?</h3> 
+        En mode voyange, il est impossible de faire des échanges.<br>
+        Cependant, vous pouvez vous connecter et ajouter des livres dans votre stock.
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">3. Y'a-t-il une solution pour échanger des livres tout en étant en voyage?</h3> 
+        <h4>Oui</h4>
+        La solution est simple, en allant en voyage, au lieu d'activer le mode voyage, vous modififée votre compte, en changeant juste l'adresse.
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">4. Est-ce qu'on ne risque pas de perdre nos points en modifiant notre compte?</h3> 
+        <h4>Non</h4>
+        La modification de compte n'a aucun rapport avec les points.<br>
+        Seule la suppression du compte entraine la perte de toute vos points.<br>
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">5. Comment modifier son compte?</h3> 
+        Connectez-vous  et cliquez, <span class="sty">Modifier mon compte</span>, remplissez le formulaire qui vous sera soumis et valider.
+    </div> 
+
+
+{% else %}
+    <ol>
+        <li><a href=""  data-toggle="modal" data-target="#vacanceModal1" >Quel est le rapport entre voyage et échange de livres?</a></li>
+        <li><a href=""  data-toggle="modal" data-target="#vacanceModal2" >Peut-on faire des échange en étant en voyage?</a></li>
+        <li><a href=""  data-toggle="modal" data-target="#vacanceModal3" >Y'a-t-il une solution pour échanger des livres tout en étant en voyage?</a></li>
+        <li><a href=""  data-toggle="modal" data-target="#vacanceModal4" >Est-ce qu'on ne risque pas de perdre nos points en modifiant notre compte? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#vacanceModal5" >Comment modifier son compte? </a></li>
+    
+    </ol>
+
+
+
+    <div class="modal fade" id="vacanceModal1" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Quel est le rapport entre voyage et échange de livres?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                
+                        L'échange est basée en grande partie sur les adresses des utilisateurs.<br>
+                        Lorsqu'un utilistateur souhaite recevoir un livre, on regarde parmis tout les utilisateur qui possèdent le livre dans leurs stocks
+                        celui qui est plus proche de lui, et l'envoyer la demande. Et ce dans le but de faciliter le processus d'expédition du livre.<br>
+                        Mais lorsque vous voyagez, vous changez d'adresse.<br>Voilà le rapport.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="vacanceModal2" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Peut-on faire des échange en étant en voyage?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        
+                        En mode voyange, il est impossible de faire des échanges.<br>
+                        Cependant, vous pouvez vous connecter et ajouter des livres dans votre stock.
+                    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="vacanceModal3" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance"> Y'a-t-il une solution pour échanger des livres tout en étant en voyage?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        
+                            <h4>Oui</h4>
+                            La solution est simple, en allant en voyage, au lieu d'activer le mode voyage, vous modififée votre compte, en changeant juste l'adresse.
+                    
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="vacanceModal4" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Est-ce qu'on ne risque pas de perdre nos points en modifiant notre compte?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                
+                    
+                            <h4>Non</h4>
+                            La modification de compte n'a aucun rapport avec les points.<br>
+                            Seule la suppression du compte entraine la perte de toute vos points.<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="vacanceModal5" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment modifier son compte?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                
+                        Connectez-vous  et cliquez, <span class="sty">Modifier mon compte</span>, remplissez le formulaire qui vous sera soumis et valider.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</div>

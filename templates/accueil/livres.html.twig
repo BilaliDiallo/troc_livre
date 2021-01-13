@@ -1,0 +1,56 @@
+{% if  livres|length == 0 %}
+                
+                {% if source =='categorieLivre'%}
+                    <h2>Cette catégorie n'a pas de livre </h2>
+                {% elseif source =='re_cher_che' %}
+                    <h2>Livre ou auteur non trouvé.</h2>
+                {% endif %}
+
+{% else %}
+    {% if source =='re_cher_che' %}
+        {% if  livres|length >1 %}
+                    <h2>{{ livres|length }} livres trouvés.</h2>
+            
+        {% else %}
+            <h2>{{ livres|length }} livre disponible à l'échange.</h2>
+        {% endif %}
+    {% else %}
+                <div style=" text-align:center;"> <h2> {{ livres|length }} livres disponibles à l'échange.</div>
+    {% endif %}
+{% endif %}
+
+{% for livre in livres|reverse %}
+                    <div class='Livre'>
+                        <div class='image_livre'>
+                            {% if livre.saisie %}
+                                <img src="{{ asset('/Images/'~ livre.image) }}" alt="image" width="150">  
+                            {% else %}
+                                <img src="{{ livre.image}}" alt="image" width="150">
+                            {% endif %}
+                        </div>
+                        <div class='infos_livre'>
+                            <a href="{{ path('infos_livres', {'id': livre.id}) }}"><h6 class='prop_t' >{{ livre.titre }}</h6></a>
+                            <a href="{{ path('auteur_livres', {'id': livre.auteur.id}) }}"><h6 class='prop_a' >{{livre.auteur.nomComplet}}</h6></a>
+                            <a href="{{ path('categorie_livres', {'id': livre.categorie.id}) }}"><h6 class='prop_a' >{{livre.categorie.nomCategorie}}</h6></a>
+                            <div class='prop' >{{livre.nombrePoints}} Points</div>
+                            {% if livre.disponible %}
+                               
+                                    <a href="{{ path('app_commander', {'id': livre.id}) }}"><h6 class='echange'  >Commander</h6></a>
+                              
+                            {% endif %}
+                            <a href="{{ path('ajouter_livres', {'id': livre.id}) }}" onclick="return confirm('Voulez-vous ajouter ce livre dans votre bibliothèque?');"><h6 class='echange_c'> Ajouter </h6></a>                        
+                        
+            
+                        </div>
+                    </div>
+{% endfor %}
+{% if not source == 'homepage' %}
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>
+{% endif %}
+
+
+
+
+

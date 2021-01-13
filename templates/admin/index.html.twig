@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Admin{% endblock %}</title>
+         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/meslivres.css') }}">
+         
+
+    </head>
+    <body>
+{% block body %}
+    <header > 
+       <nav  id="nav_admin" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Espace administrateur</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('admin') }}">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li c   lass="nav-item">
+                    <a class="nav-link" href="{{ path('admin_list_livre') }}">Livres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_list_User') }}">Utilisateurs</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_list_Commandes') }}">Commandes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('accueil') }}">Retour à la page d'accueil</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    {% if source =="livres" %}
+        {{ include('livre/index.html.twig')}}
+    {% elseif source =="listeUsers" %}
+        {{ include('admin/users.html.twig')}}
+    {% elseif source =="listeCommandes" %}
+        {{ include('admin/commandes.html.twig')}}
+    {% else %}
+        <div class='haut'>
+               <div class="container-rr">
+     
+          {# <h3 style="background-color:white; width:auto; border-radius:1em; text-align:center;">Echangez vos livres en toute sécurité et efficacité</h3> #}
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- Indicateurs -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+
+        <!-- Carrousel -->
+        <div class="carousel-inner">
+          <div id='classe_defile' class="carousel-item active">
+            <img src="{{ asset('/Images/photo4.jpg') }}" alt="Carrousel slide 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 >Consultez la liste des utilisateurs ...</h3>
+              <p>Supprimer, ajouter ou retirer un utilisateurs de la liste des admins.</p>
+            </div>
+          </div>
+          <div id='classe_defile' class="carousel-item">
+            <img src="{{ asset('/Images/im.jpg') }}" alt="Carrousel slide 2" >
+            <div class="carousel-caption d-none d-md-block text-white">
+              <h3>Consultez les livres ....</h3>
+              <p>Supprimez ou modifiez le nombre de points d'un livre !!!!!</p>
+            </div>
+          </div>
+          <div id='classe_defile' class="carousel-item">
+            <img src="{{ asset('/Images/bbb.jpg') }}" alt="Carrousel slide 3" >
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Consulter la liste des condandes </h3>
+              <p>Constatez la participation des utilisateurs.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contrôles -->
+        <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Suivant</span>
+        </a>
+    </div>        
+            
+</div>
+        </div>
+
+        
+        <div class='utilisationn'>
+            <br><br><br><br><br>
+                <h1> Bienvenue dans votre espace administrateur.</h1>
+                En tant que administrateur, vous pouvez:
+                <ol>
+                <div class='isbn'>
+                    <li ><h3> Voir la liste des utilisateurs, </h3></li>
+                    <ul>
+                        <li><h5>Ajouter un utilisateur à la liste des  administrateurs </h5></li>
+                        <li><h5>Retirer un administrateur de la liste des administrateurs</h5></li>
+                        <li><h5>Supprimer un utilisateur</h5></li>
+                    </ul>
+                </div>
+                
+                <div class='isbn'>
+                    <li  ><h3> Voir la liste des livres,</h3></li>
+                    <ul>
+                        <li><h5>Changer le nombre de points d'un livre </h5></li>
+                        <li><h5>Voir la liste des propriétaires d'un livre</h5></li>
+                        <li><h5>Supprimer un livre</h5></li>
+                    </ul>
+                </div>
+
+                <div class='isbn'>
+                    <li  ><h3> Voir la liste des commandes. </h3></li>
+                </div>    
+                    
+                </ol>
+            </div>
+        </div>
+       
+
+
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+            <script  type="text/javascript" src="{{ asset('Styles/jquery.min.js')}}"></script>
+            <script type="text/javascript" src="{{ asset('Styles/bootstrap.js')}}"></script>
+            <script type="text/javascript" src="{{ asset('Styles/jquery-3.4.1.js')}}"></script>
+            <script>
+      
+            $('.carousel').carousel({
+            interval : 1500});
+  </script> 
+
+        {% endblock %}
+</body>
+</html>

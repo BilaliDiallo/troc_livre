@@ -1,0 +1,260 @@
+<div id ="ajouterlivre">
+    <h1 style="text-align:center;">Les points.</h1>
+    La monnaie d'échange ici étant les points, il est important de s'intéroger sur ces derniés.<br>
+    
+{% if  action == 'guide' %}
+    <div class="isbn">
+        <h4 style="text-align:center;">1. Comment gagner des points?</h4>
+        C'est simple, échanger vos livres et vous gagnez les points.<br>
+        A chaque chaque fois que vous envoyer un livre, vous recevez le nombre de points de ce livre.<br>
+        Donc pour gagner des points et profiter des livres, accepter vite vos demandes et envoyez les livres .<br>
+
+    </div>
+    <div class="isbn">
+            <h4 style="text-align:center;">2. Comment transférer des points?</h4>
+                        Il vous est également possible de tranférer des points à vos amis en cas de besoin.<br>
+                        Pour transférer des points, if suffit de se connecter et cliquer sur <span class='sty'>Transferer des points</span>.
+                    </div>
+    <div class="isbn">
+        <h3 style="text-align:center;">3. Combien de points vaut un livre?</h3>
+        Pour le moment le nombre de point du livre dépend de son nombre de pages.<br>
+        Moins de 100 pages c'est 1 point de entre 100 et 200 pages 2 points ainsi de suite.<br>
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">4. Comment commander un livre sans points?</h3>
+        Ne vous inquiétez pas, juste après l'inscription, vous aurrez <span class='sty'>4 points</span> gratuits
+        pour commencer à profiter des échanges.<br>
+        Après ces quatre points, votre seul moyen de gagné des points, est d'échanger vos livres.<br>
+        Vous pouvez également demander à un de vos amis de vous transférer des points, c'est bien possible.
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">5. Peut-on  emprunter des points?</h3>
+        <h3>Oui</h3>
+        Mais seuls les plus grands participants (ceux qui auront envoyé plus de 10 livres), auront cette possibilité.<br>
+        Alors échangez vos livres et gagnez des points et obtenez également la possibilité de faire des prêts de points.<br>
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">6. Comment emprumter des points? </h3>
+        Pour emprunter des points, connectez-vous et cliquez sur <span class='sty'>Emprunter des points</span>
+        Un formulaire vous serat soumis lequel vous remplierez <br>
+        <h4>Attention</h4>
+        Seuls ceux qui auront envoyé plus de dix livres auront ce privilège.<br>
+    </div>
+
+    <div class="isbn">
+        <h3 style="text-align:center;">7. Comment rembourser les points empruntés? </h3>
+        Le remboursement est automatique, si vous empruntez des points, le remboursement se fait automatiquement 
+        quand vous envoyé un livre.<br>
+        A chaque fois que vous envoyez un livre, on extrait deux points pour rembouser et le reste des points du livre vous sont donné.
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% else %}
+
+    <ol>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints1" >Comment gagner des points? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints7" >Comment transférer des points? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints2" >Combien de points vaut un livre? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints3" >Comment commander un livre sans points? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints4" >Peut-on  emprunter des points? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints5" >Comment emprumter des points? </a></li>
+        <li><a href=""  data-toggle="modal" data-target="#Modalepoints6" >Comment rembourser les points empruntés? </a></li>
+    </ol>
+
+
+
+    <div class="modal fade" id="Modalepoints1" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment gagner des points?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        C'est simple, échanger vos livres et vous gagnez les points.<br>
+                        A chaque chaque fois que vous envoyer un livre, vous recevez le nombre de points de ce livre.<br>
+                        Donc pour gagner des points et profiter des livres, accepter vite vos demandes et envoyez les livres .<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modalepoints2" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Combien de points vaut un livre?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        Pour le moment le nombre de point du livre dépend de son nombre de pages.<br>
+                        Moins de 100 pages c'est 1 point de entre 100 et 200 pages 2 points ainsi de suite.<br>     
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="Modalepoints3" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment commander un livre sans points?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   
+                    <div class="isbn">
+                        Ne vous inquiétez pas, juste après l'inscription, vous aurrez <span class='sty'>4 points</span> gratuits
+                        pour commencer à profiter des échanges.<br>
+                        Après ces quatre points, votre seul moyen de gagné des points, est d'échanger vos livres.<br>
+                        Vous pouvez également demander à un de vos amis de vous transférer des points, c'est bien possible.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modalepoints4" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance"> Peut-on  emprunter des points?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        <h3>Oui</h3>
+                        Mais seuls les plus grands participants (ceux qui auront envoyé plus de 10 livres), auront cette possibilité.<br>
+                        Alors échangez vos livres et gagnez des points et obtenez également la possibilité de faire des prêts de points.<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modalepoints5" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment emprumter des points?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                   <div class="isbn">
+                   
+                        Pour emprunter des points, connectez-vous et cliquez sur <span class='sty'>Emprunter points</span>
+                        Un formulaire vous serat soumis lequel vous remplierez <br>
+                        <h4>Attention</h4>
+                        Seuls ceux qui auront envoyé plus de dix livres auront ce privilège.<br> 
+                    </div> 
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modalepoints6" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment rembourser les points empruntés?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        Le remboursement est automatique, si vous empruntez des points, le remboursement se fait automatiquement 
+                        quand vous envoyé un livre.<br>
+                        A chaque fois que vous envoyez un livre, on extrait deux points pour rembouser et le reste des points du livre vous sont donné.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modalepoints7" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment transferer des points?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        Il vous est également possible de tranférer des points à vos amis en cas de besoin.<br>
+                        Pour transférer des points, if suffit de se connecter et cliquer sur <span class='sty'>Transferer des points</span>.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="gguide"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>

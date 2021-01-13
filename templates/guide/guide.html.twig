@@ -1,0 +1,261 @@
+
+
+
+
+{% if action == 'points' %}
+
+    {{ include('guide/points.html.twig')}}
+    <div id ='retour'>
+        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+    </div>
+
+{% elseif action == 'ajouterlivre' %}
+
+    {{ include('guide/ajouterlivre.html.twig')}}
+    <div id ='retour'>
+        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+    </div>
+{% elseif action == 'voyages' %}
+
+    {{ include('guide/voyage.html.twig')}}
+    <div id ='retour'>
+        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+    </div>
+{% elseif action == 'echangerlivre' %}
+
+    {{ include('guide/echangerlivre.html.twig')}}
+    <div id ='retour'>
+        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+    </div>
+{% else %}
+    <div  id="utilisationn">
+    <h1 style="text-align:center;">Guide d'utilisation</h1>
+        <ol>
+            <li><a href=""  data-toggle="modal" data-target="#guide1" >Context </a></li>
+            <li><a href=""  data-toggle="modal" data-target="#guide2" >Objectifs </a></li>
+            <li><a href=""  data-toggle="modal" data-target="#guide3" >Mode de fonctionnement</a></li>
+            <li><a href=""  data-toggle="modal" data-target="#guide4" >Points</a></li>
+            <li><a href=""  data-toggle="modal" data-target="#guide5" >Ajout livre </a></li>
+            <li><a href=""  data-toggle="modal" data-target="#guide6" >Echanger un livre </a></li>
+            
+            <li><a href=""  data-toggle="modal" data-target="#guide7" >Voyages</a></li>
+        </ol>
+   
+        
+        <p id="isbn"> 
+            <h1 >Context </h1>
+            Certains livres sont plus précieux que d'autres : ceux qui nous ont le plus marqué, 
+            qui nous ont parfois changé, et qui font partie de notre vie. Ceux-là ne sont pas faciles à donner, 
+            vendre ou échanger : comme le souvenir d'un voyage, on préfère les garder avec soi. Mais tous les livres 
+            n'ont pas cette valeur sentimentale. Certains restent là, inertes, délaissés, dans nos bibliothèques.
+            Or, les livres d'aujourd'hui ne sont pas éternels : ils jaunissent, s'abiment, se désagrègent. 
+            Entreposés sur des étagères, ils ne pourront un jour plus être lus. Donner un livre permet de redonner
+            vie à un objet que l'on a apprécié (ou pas), en en faisant profiter quelqu'un d'autre, 
+            le tout sans coût pour l'environnement. Pour peu que l'on surmonte quelques barrières psychologiques,
+            l'échange de livre est une évidence : tout le monde y gagne.
+
+            
+        </p>
+
+        <p id="isbn">
+            <h1>Objectifs</h1>
+            Les livres ne sont pas des déchets comme les autres. L'objet est source d'attachement et le livre est bien 
+            souvent conservé dans les foyers même s'il n'a que peu de chances d'être lu à nouveau. Afin de proposer une 
+            solution aux lecteurs qui ne souhaitent pas jeter leurs livres mais pour qui les conserver n'apporte rien, nous 
+            vous proposons un site de troc de livres ouvert à tous qui vous permettra, au lieu d’acheter de nouveaux livres, 
+            échanger juste avec les vôtres.
+        </p>
+        
+        <p id="isbn">
+            <h1>Mode de fonctionnement</h1>
+            Tout commence par une identification (création de compte). Les échanges se font par des points. Chaque livre à
+            un nombre de point bien défini qui est fonction de son nombre de pages. <br>
+            Toutes personne voulant ajouter ou commander un livre devra être connecter.
+        </p>
+
+        
+    </div>
+
+    {{ include('guide/points.html.twig')}}
+
+    {{ include('guide/ajouterlivre.html.twig')}}
+
+    {{ include('guide/echangerlivre.html.twig')}}
+
+
+
+
+    <div class="modal fade" id="guide1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Context</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="isbn"> 
+            
+            Certains livres sont plus précieux que d'autres : ceux qui nous ont le plus marqué, 
+            qui nous ont parfois changé, et qui font partie de notre vie. Ceux-là ne sont pas faciles à donner, 
+            vendre ou échanger : comme le souvenir d'un voyage, on préfère les garder avec soi. Mais tous les livres 
+            n'ont pas cette valeur sentimentale. Certains restent là, inertes, délaissés, dans nos bibliothèques.
+            Or, les livres d'aujourd'hui ne sont pas éternels : ils jaunissent, s'abiment, se désagrègent. 
+            Entreposés sur des étagères, ils ne pourront un jour plus être lus. Donner un livre permet de redonner
+            vie à un objet que l'on a apprécié (ou pas), en en faisant profiter quelqu'un d'autre, 
+            le tout sans coût pour l'environnement. Pour peu que l'on surmonte quelques barrières psychologiques,
+            l'échange de livre est une évidence : tout le monde y gagne.
+
+            
+        </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+          
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="guide2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Objectifs </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="isbn">
+                    
+                    Les livres ne sont pas des déchets comme les autres. L'objet est source d'attachement et le livre est bien 
+                    souvent conservé dans les foyers même s'il n'a que peu de chances d'être lu à nouveau. Afin de proposer une 
+                    solution aux lecteurs qui ne souhaitent pas jeter leurs livres mais pour qui les conserver n'apporte rien, nous 
+                    vous proposons un site de troc de livres ouvert à tous qui vous permettra, au lieu d’acheter de nouveaux livres, 
+                    échanger juste avec les vôtres.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="guide3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Mode de fonctionnement</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <p id="isbn">
+                   
+                    Tout commence par une identification (création de compte). Les échanges se font par des points. Chaque livre à
+                    un nombre de point bien défini qui est fonction de son nombre de pages. <br>
+                    Toutes personne voulant ajouter ou commander un livre devra être connecter.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="guide4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Points </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ include('guide/points.html.twig')}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="guide5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Ajout livre </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              {{ include('guide/ajouterlivre.html.twig')}}
+
+   
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="guide6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Echanger un livre </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                 {{ include('guide/echangerlivre.html.twig')}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="guide7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Voyages</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                 {{ include('guide/voyage.html.twig')}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Quitter</button>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id ='retour'>
+        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+    </div>
+
+{% endif %}

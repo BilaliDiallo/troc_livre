@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+       
+        <title>{% block title %}TrocLivres{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/jpg" href="{{ asset('/Images/log.png') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/meslivres.css') }}">
+    </head>
+    <body>
+    {% block body %}
+        <header > 
+            {{ include('accueil/navbar.html.twig')}}
+            
+                {# {{ include('accueil/bienvenue.html.twig')}} #}
+                <h3 style="text-align: center;"> Bienvenue dans votre bibliotroc en ligne.</h3>
+        
+        </header>
+        <div  id="bbody">
+             {{ include('accueil/accueil.html.twig')}}
+            <div class="col_2">
+                <div id='utilisateur'>
+                    {% if  app.user  %}
+                        <div class="user">
+                            <h6 class="nom">Bienvenu {{app.user.Pseudo}} </h6>  
+                            <a href="" data-toggle="modal" data-target="#Modale_pointss"><h6 class='propriétés'>{{app.user.points}} Points</h6></a>
+                            <a href="{{ path('emprunter_points') }}"><h6 class='propriété'>Emprunter des points</h6></a>
+                            <a href="" data-toggle="modal" data-target="#Modale_transfert"><h6 class='propriété'>Transferer des points</h6></a>
+                            <a href="" data-toggle="modal" data-target="#Modale_bibliotheque"><h6 class='propriétés'>Bibliothèque</h6></a>
+                            <a href="{{ path('mes_livres') }}"><h6 class='propriété'>Mes livres</h6></a>
+                            <a href="{{ path('pays_new') }}"><h6 class='propriété'>Ajouter un livre</h6></a> 
+                            <a href="" data-toggle="modal" data-target="#Modale_Echangee"><h6 class='propriétés'>Mes échanges</h6></a>
+                            <a href="{{ path('app_mesCom') }}"><h6 class='propriété'>Mes commandes  </h6></a>
+                            {% if  app.user.newDemande ==0 %}
+                                <a href="{{ path('app_mesDemandes') }}"><h6 class='propriété'>Mes livres demandés</h6></a>
+                            {% else %}
+                                <a href="{{ path('app_mesDemandes') }}"><h6 class='propriété'>Mes livres demandés: {{ app.user.newDemande }}</h6></a>   
+                            {% endif %}
+                            {% if  app.user.newEnvoie ==0 %}
+                                <a href="{{ path('app_mesEnvoies') }}"><h6 class='propriété'>Mes envoies <h6></a>
+                            {% else %}
+                                
+                                <a href="{{ path('app_mesEnvoies') }}"><h6 class='propriété'>Mes envoies :{{ app.user.newEnvoie }}</h6></a>
+                            {% endif %}
+                            {% if app.user.vacance %}
+                                <a href="" data-toggle="modal" data-target="#Voyageee"><h6 class='propriétés'>Vous êtes en voyage</h6></a>
+                                <a href="{{ path('app_retourVacances') }}"><h4 class='propriété'>Désactiver le mode voyage </h4></a>
+                            {% else %}
+                                <a href="" data-toggle="modal" data-target="#Voyageee"><h6 class='propriétés'>Aller en voyage</h6></a>
+                                <a href="{{ path('app_vacances') }}"><h4 class='propriété'>Activer le mode voyage </h4></a>
+                            {% endif %}
+                            <a href="{{ path('modifier_compte') }}"><h6 class='propriété'>Modifier mon compte</h6></a>
+                            <a href="" data-toggle="modal" data-target="#Modale_deconnexion"><h6 class='propriété'>Déconnexion</h6></a>
+
+                            <a href="" data-toggle="modal" data-target="#Modale_supprimer"><h6 class='echange_s' >Supprier mon compte</h6></a>
+                        </div>
+                    {% else %}
+                        {% if source =='index'%}
+                        
+                            {{ include('security/login.html.twig')}}
+                        {% else %}    
+                            <a href="{{ path('accueil') }}"><h6 class='inscription'>Se connecter </h6></a> 
+                        {% endif %}
+                        
+                        <a href="{{ path('app_register') }}"><h6 class='inscription'> S'inscrire </h6></a>
+                        <a href="" data-toggle="modal" data-target="#MotDePasseOublier"><h6 class='MotDePasseOublier'>Mot de passe oublié</h6></a>
+                    {% endif %}
+                </div>
+                <div id='categories'>
+                    <h5 class='cccc'> Categories </h5>
+                    {% for categorie in categories %}
+                        <a href="{{ path('categorie_livres', {id: categorie.id}) }}"><h6 class='categorie'>{{ categorie.nomCategorie }}</h6></a>
+                    {% endfor %}
+                
+                </div>
+
+                <div class="isbn">
+                        Lisez le guide d'utilisation pour comprendre le mode de fonctionnement du site.
+                </div>
+            </div>
+            <div class="col_8">
+                {% if source =='ajouterLivre'%}
+                    <div id = 'alert'>
+                        Livre ajouter avec succès !!!
+                    </div>
+                {% endif %}
+
+                {% if source =='user_inscription'%}
+                    {{ include('registration/register.html.twig')}}
+                {% elseif source =='vacance'  %}
+                    <div id = 'alert'>
+                        Vous étes désormais en mode voyage.<br>
+                        Vous ne recevrez plus de commandes tant que vous ne le désactivez pas !!!.<br>
+                        Ne tardez pas à désactiver le mode voyage à votre retour.<br>
+                        <h4>Bon voyage a vous {{app.user.civilite}} {{app.user.nom}}</h4>
+                    </div>
+                {% elseif source =='RetourVacance'  %}
+                    <div id = 'alert'>
+                        Vous avez déactivé le mode voyage. <br>
+                        Vous pouvez maintenant échanger vos livres en toute sécurité.
+                    </div>
+                {% elseif source =='mesLivre' or source=='supprimerLivre' %}
+                    {{ include('accueil/meslivres.html.twig')}} 
+                {% elseif source =='pret_points' %}
+                    <div id ="alert">
+                        Vous venez d'emprunter {{ points }} points. Le rembouressement se fera, automatiquement 
+                        lors de votre prochain échange.<br>
+                    </div>
+                    <div id ='retour'>
+                            <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+                    </div>
+                {% elseif source == 'emprunterpoints' %}
+                    {% if alert == 'true' %}
+                        <div class="isbn">
+                            <form method="post" action="{{ path('pret_points') }}">
+                            
+                                <h4>Emprunter des points</h4>
+
+                                Vous pouvez emprunter jusqu'à 5 points.<br><br>
+                                <div class="form-group row">
+                                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Entrer le nombre de points</label><br>
+                                    <div class="col-sm-10">
+                                    <input type="number" name="points" min=1 max=5 class="form-control form-control-sm" id="colFormLabelSm"  required />
+                                    </div>
+                                </div>
+                                <input class="gguide" type="submit" value="Valider" style="margin-left: 20%;" />
+                            
+                            </form>
+
+                        </div>
+                        <div id ='retour'>
+                            <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+                        </div>
+                    {% else %}
+                        <div id ="alert">
+                            {{alert}}
+                        </div>
+                        <div id ='retour'>
+                            <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+                        </div>
+                    {% endif %}
+                {% elseif source == 'infosLivre' %}
+               
+                    {{ include('accueil/infos.html.twig')}} 
+                {% elseif source == 'ajoutLivre' %}
+                        {{ include('accueil/ajouteLivre.html.twig')}}
+                {% elseif source =='nouveauLivre' %}
+                    {{ include('pays/new.html.twig')}}
+                {% elseif source =='modifLivre' %} 
+                    {{ include('livre/edit.html.twig')}}
+                {% elseif source =='newLivre' %}
+                    {{ include('livre/new.html.twig')}}
+                {% elseif source =='mot_de_pass_oublien' %}
+                    <div class="isbn">
+                        {{alert}}
+                    </div>
+                {% elseif source =='commanderLivre' %}
+                    {{ include('accueil/commander.html.twig')}}
+                    {{ include('accueil/livres.html.twig')}}
+                {% elseif source =='mesCommandes' %}
+                    {{ include('accueil/mesCommandes.html.twig')}}
+                {% elseif source =='mesDemandes' %} 
+                    {{ include('accueil/mesDemandes.html.twig')}}
+            
+                {% elseif source =='mesEnvoies' %} 
+                    {{ include('accueil/mesEnvoies.html.twig')}}
+                
+                {% elseif source =='execption' %} 
+                    <div class = 'alert_commande'>
+                        Vous devez vous connecté pour pouvoir commande ou ajouter un livre !!!.
+                    </div>
+                    {{ include('accueil/livres.html.twig')}}
+                {% elseif source =='message_bienvenue' %} 
+                    <div id = 'alert'>
+                        <h1 class ='sty'>Bienvenue {{ user.prenom }} {{ user.nom }} </h1>
+                        Votre inscription au site TrocLivres a réussi avec succès.<br>
+                        Nous vous donnons <span class="sty">4 points</span> de bienvenue.<br>
+                        Vous pouvez d'ores et déjà vous vous connecter et commencer à ajouter et commander des livres.
+                    </div>
+                    <div id ='retour'>
+                        <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+                    </div>
+                {% elseif source =='index' or source =='homepages' %}
+                    {{ include('accueil/t.html.twig')}}
+                    {{ include('accueil/livres.html.twig')}}
+                {% elseif source =='index' or source =='guide_utilisation' %}
+                    {{ include('guide/guide.html.twig')}} 
+
+                {% elseif source =='index' or source =='user_modification' %}
+                    {{ include('registration/modifierCompte.html.twig')}}
+
+                {% elseif source =='index' or source =='message_modifier' %}
+                    <div class='isbn'>
+                        {{ user.civilite }} {{ user.prenom }} {{user.nom }} vous venez de modifier votre compte.
+                    </div>
+                    {{ include('accueil/t.html.twig')}}
+                {% elseif source =='transfertpoints' %}
+                    <div class='isbn'>
+                        {% if alert == 'true' %}
+                            <h3>Transfert  réussi avec succès.</h3>
+                            {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} vous avez transféré {{ points }} points 
+                            à {{ user.civilite }} {{ user.prenom }} {{ user.nom }}.<br>
+                            Votre nouveau solde est de {{app.user.points}} points.
+                            
+                        {% else %}
+                            <h3>Transfert non réussi</h3>
+                            {{alert}}
+                        {% endif %}
+                    </div>
+                    {{ include('accueil/t.html.twig')}}
+                {% else %}
+                    {{ include('accueil/t.html.twig')}}
+                    {{ include('accueil/livres.html.twig')}}
+                {% endif %}
+
+
+            </div>
+           
+                
+           
+         
+        </div>
+
+        <div id="footer">
+        <div class='ucad'>
+          <h4><img id="monlog"  src="{{ asset('/Images/ucad.jpg') }}"/>Université Cheikh Anta Diop de Dakar</h4>
+        </div>
+        <div class='lacgaa'>
+          <h5><img id="monlog"  src="{{ asset('/Images/lacgaa.jpg') }}"/>Laboratoire d'Algèbre, de Cryptographie, de Géométrie Algébrique et Applications</h5>
+        </div>
+
+        <a href="https://www.facebook.com/profile.php?id=100013446098539" ><img id="monlog"  src="{{ asset('/Images/face.png') }}"/></a> 
+            <a id="aller_haut" href="#top"><img src="{{ asset('/Images/hautpage.png') }}"/></a>
+        </div> 
+   
+    {% endblock %}
+
+
+        {% block javascripts %}
+                <script  src="{{ asset('Styles/jquery.min.js')}}"></script>
+                <script  src="{{ asset('Styles/bootstrap.js')}}"></script>
+                <script src="{{ asset('Styles/jquery-3.4.1.js')}}"></script>
+                <script >
+                jQuery(function(){
+    $(function () {
+        $(window).scroll(function () { //Fonction appelée quand on descend la page
+            if ($(this).scrollTop() > 200 ) {  // Quand on est à 200pixels du haut de page,
+                $('#aller_haut').css('right','10px'); // Replace à 10pixels de la droite l'image
+            } else { 
+                $('#aller_haut').removeAttr( 'style' ); // Enlève les attributs CSS affectés par javascript
+            }
+        });
+    });
+});
+            
+                        $('.carousel').carousel({
+                        interval : 500});
+                </script> 
+
+        {% endblock %}
+    </body>
+
+
+</html>

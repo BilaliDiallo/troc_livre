@@ -1,0 +1,201 @@
+<div id="ajouterlivre">
+        <h1 style="text-align:center;">Echange de livres</h1>
+        <br>
+    Le principal objetif de ce site etant faire des échanges, il est intéressant de savoir comment s'y prendres.<br>
+    Dans cet partie, nous traiterons les questions suivantes:
+    
+<br>
+{% if  action == 'guide' %}   
+    <div class="isbn">
+        <h2 style="text-align:center;"> 1. Qu'entend-t-on par échange de livre?</h2>
+        S'agit-il d'un échange proprement dit (tu me donnes un livre et je t'en donne un)?<br>
+        Non il ne s'agit pas de ça.<br>
+        Lorsque vous avez un livre que vous ne lisez plus, vous l'ajouter dans votre stock,
+        si quelqu'un souhaite avoir votre livre, il le commande, vous le livrez et vous gagnez des points.
+        <br>Ces avec ces points que vous allez pouvoir aussi commander des livres.<br>
+        De cette façon, vous pourrez recevoir des livres même si vous n'avez pas de livres à donner en retour.<br>
+    </div>
+
+
+    <div class="isbn">
+        <h2 style="text-align:center;"> 2. Comment commander un livre?</h2>
+        Pour commander un livre, il faut d'abord se connecter (si vous n'avez pas de compte, s'inscrire) cliquer sur le boutton commander.
+        <br>Il faut nécessairement avoir un solde de points suppérieur ou égal à celui du livre pour pouvoir le commander.<br>
+    </div>
+        <div class="isbn">
+            <h3 style="text-align:center;"> 3. Comment fonctionne  l'échange? </h3>
+            Un livre peut avoir plusieurs propriétaires.<br>
+            Une fois que vous cliquez sur le boutton commander, en fonction de votre adresse, le propriétaire du livre le plus proche
+            de vous, recevra une notification lui informant que quelqu'un veut son livre, il pourra valider la demande ou la refuser.
+            <br>
+            Pour savoir si votre commande est valider ou non, vous vous connecter, et cliquez sur <span class='sty'>Mes commandes </span>
+            vous verrez le statut de votre commande.<br>
+            Si la commande n'est pas valider dans trois jours après, vous pouver cliquer sur le boutton <span class='sty'>Redemander</span>
+            la commande sera ensuite renvoyer à un autre utilisateur.<br>
+            Si la commande est validée, vous patientez quelques jours, si vous ne recevez pas le livre, vous redemandez le livre.<br>
+            Une fois que vous recevez le livre, vous devrez vous connecter et confirmer la réception du livre en cliquant sur le boutton <span class='sty'>Reçue </span>
+            afain que le proprietaire du livre puisse recevoir ses points.<br>
+            Toutefois, si vous changez d'avis avant la réception du livre, vous pourrez supprimer la commande et récupérer vos points.
+            <p class='sty'>
+                Cependant, il est formellement interdit de supprimer une commande après avoir reçu le livre, avant de confirmer la réception.<br>
+                Car si vous supprimez la commande, le proprietaire du livre ne pourra pas recevoir ses points.<br>
+                Celui qui supprime une commande reçu sans confirmer la réception, risque une exclusion définitif du site.<br>
+            </p>
+        </div>
+        <div class="isbn">
+            <h3 style="text-align:center;">4. Comment échanger un livre?</h3>
+            Une fois que votre livre est demande, vous verrez une notification sur <span class="sty">Mes livres demandés</span>, vous aurait deux options:<br>
+            <ol>
+                <li><span class="sty">Accepter</span>: pour accepter la demande,</li>
+                <li><span class="sty">Refuser</span>: pour refuser la demande.
+            </ol>
+                Une fois que vous acceptez la demande, vous recevrez les informations completes du demandeur ( prenom, nom, adresse et numero de téléphone ). 
+                Il vous reviendra donc de lui envoyer le livre le plus rapidement possible, pour gagner les points.<br>
+                Après le réception du livre, il va à son tour, confirmer la réception et vous recevrez alors vos points.<br>
+                <div class='sty'>
+                    Si après avoir envoyer un livre, vous restez deux à trois jours sans avoir reçu les points, vous pourrez le signaler, en cliquant sur le boutton <span class='gguide'> Réclamations points</span> dans la page mes demandes.<br>
+                </div>
+            <br>
+            Si vous restez longtemps sans valider et envoyer vos demandes, elle seront annulées, et envoyées à un autre.
+
+            
+            Si vous n'êtes pas près à envoyer des livres, vous pour activer le mode voyage.<br>
+        </div> 
+
+{% else %}
+    <ol>
+         <li><a href=""  data-toggle="modal" data-target="#Modaleechange1" >Qu'entend-t-on par échange de livre? </a></li>
+         <li><a href=""  data-toggle="modal" data-target="#Modaleechange2" >Comment commander un livre? </a></li>
+         <li><a href=""  data-toggle="modal" data-target="#Modaleechange3" >Comment fonctionne  l'échange? </a></li>
+         <li><a href=""  data-toggle="modal" data-target="#Modaleechange4" >Comment échanger un livre? </a></li>
+    </ol>
+
+
+
+    <div class="modal fade" id="Modaleechange1" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Qu'entend-t-on par échange de livre?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        S'agit-il d'un échange proprement dit (tu me donnes un livre et je t'en donne un)?<br>
+                        Non il ne s'agit pas de ça.<br>
+                        Lorsque vous avez un livre que vous ne lisez plus, vous l'ajouter dans votre stock,
+                        si quelqu'un souhaite avoir votre livre, il le commande, vous le livrez et vous gagnez des points.
+                        <br>Ces avec ces points que vous allez pouvoir aussi commander des livres.<br>
+                        De cette façon, vous pourrez recevoir des livres même si vous n'avez pas de livres à donner en retour.<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="Modaleechange2" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment commander un livre?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        Pour commander un livre, il faut d'abord se connecter (si vous n'avez pas de compte, s'inscrire) cliquer sur le boutton commander.
+                        <br>Il faut nécessairement avoir un solde de points suppérieur ou égal à celui du livre pour pouvoir le commander.<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modaleechange3" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment fonctionne  l'échange?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                    Un livre peut avoir plusieurs propriétaires.<br>
+                    Une fois que vous cliquez sur le boutton commander, en fonction de votre adresse, le propriétaire du livre le plus proche
+                    de vous, recevra une notification lui informant que quelqu'un veut son livre, il pourra valider la demande ou la refuser.
+                    <br>
+                    Pour savoir si votre commande est valider ou non, vous vous connecter, et cliquez sur <span class='sty'>Mes commandes </span>
+                    vous verrez le statut de votre commande.<br>
+                    Si la commande n'est pas valider dans trois jours après, vous pouver cliquer sur le boutton <span class='sty'>Redemander</span>
+                    la commande sera ensuite renvoyer à un autre utilisateur.<br>
+                    Si la commande est validée, vous patientez quelques jours, si vous ne recevez pas le livre, vous redemandez le livre.<br>
+                    Une fois que vous recevez le livre, vous devrez vous connecter et confirmer la réception du livre en cliquant sur le boutton <span class='sty'>Reçue </span>
+                    afain que le proprietaire du livre puisse recevoir ses points.<br>
+                    Toutefois, si vous changez d'avis avant la réception du livre, vous pourrez supprimer la commande et récupérer vos points.
+                    <p class='sty'>
+                        Cependant, il est formellement interdit de supprimer une commande après avoir reçu le livre, avant de confirmer la réception.<br>
+                        Car si vous supprimez la commande, le proprietaire du livre ne pourra pas recevoir ses points.<br>
+                        Celui qui supprime une commande reçu sans confirmer la réception, risque une exclusion définitif du site.<br>
+                    </p>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Modaleechange4" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="AllerEnVacance">Comment échanger un livre?</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="isbn">
+                        Une fois que votre livre est demande, vous verrez une notification sur <span class="sty">Mes livres demandés</span>, vous aurait deux options:<br>
+                        <ol>
+                            <li><span class="sty">Accepter</span>: pour accepter la demande,</li>
+                            <li><span class="sty">Refuser</span>: pour refuser la demande.
+                        </ol>
+                            Une fois que vous acceptez la demande, vous recevrez les informations completes du demandeur ( prenom, nom, adresse et numero de téléphone ). 
+                            Il vous reviendra donc de lui envoyer le livre le plus rapidement possible, pour gagner les points.<br>
+                            Après le réception du livre, il va à son tour, confirmer la réception et vous recevrez alors vos points.<br>
+                            <div class='sty'>
+                                Si après avoir envoyer un livre, vous restez deux à trois jours sans avoir reçu les points, vous pourrez le signaler, en cliquant sur le boutton <span class='gguide'> Réclamations points</span> dans la page mes demandes.<br>
+                            </div>
+                        <br>
+                        Si vous restez longtemps sans valider et envoyer vos demandes, elle seront annulées, et envoyées à un autre.
+
+                        
+                        Si vous n'êtes pas près à envoyer des livres, vous pour activer le mode voyage.<br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="echange"  data-dismiss="modal">Quitter le paragraphe</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</div>

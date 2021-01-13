@@ -1,0 +1,3 @@
+homePage:
+   path: /
+   controller: App\Controller\AccueilController::homepage

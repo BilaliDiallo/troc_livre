@@ -1,0 +1,18 @@
+<div class='modif_points'>
+    <form method="post" action="{{ path('admin_changePoints') }}">
+        <fieldset>
+            <legend>Modification de points</legend>
+            <h5>Modifier les points du livre {{livre.titre}}</h5>
+            {# <label>Entrer le nombre de points</label>
+            <input type="number" name="points" required /> #}
+            <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Entrer le nombre de points</label>
+    <div class="col-sm-10">
+      <input type="number" name="points" class="form-control form-control-sm" id="colFormLabelSm"  required />
+    </div>
+  </div>
+            <input id="boutton" type="submit" value="Valider" onclick="return confirm('Vous êtes sur le ppoint de modifier le nombre de points de ce livre')"/>
+        </fieldset>
+    </form>
+
+<div>

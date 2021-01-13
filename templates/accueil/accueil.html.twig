@@ -1,0 +1,355 @@
+
+
+        <div class="modal fade" id="MotDePasseOublier" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Mot de passe oublié</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{{ path('motdepassOublie') }}">
+                            <div class="isbn">
+                               <h3>Récupération de mot de passe</h3> 
+                                <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label><br>
+                                        <div class="col-sm-10">
+                                            <input type="email" name="email" placeholder="Entrer votre adresse email " class="form-control form-control-sm" id="colFormLabelSm"  required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Mot de passe</label><br>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="password" placeholder="Entrer un nouveau mot de passe " class="form-control form-control-sm" id="colFormLabelSm"  required />
+                                        </div>
+                                    </div>  
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input class="gguide" type="submit" value="Confirmer" />
+                            <a href="" class="echange"  data-dismiss="modal"> Annuller</a>
+                            
+                            
+                        </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% if app.user %} 
+        <div class="modal fade" id="Modale_pointss" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Mon solde de points</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="isbn">
+                            {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} votre sode de point est de {{ app.user.points }} points.
+                        
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="echange"  data-dismiss="modal">Quitter</a>
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Modale_bibliotheque" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Ma bibliothèque </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="isbn">
+                            {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} 
+                            {% if  app.user.avoir|length == 0 %} votre bibliothèque est vide.<br>
+                            Veuillez ajouter des livres si vous en avez et profitez des échanges .<br>
+                            {% elseif app.user.avoir|length == 1 %} vous n'avez qu'un seul livre dans votre bibliothèque.<br>
+                            {% else %}
+                            vous avez à présent {{ app.user.avoir|length }} livres
+                            dans votre bibliothèque.
+                            {% endif %}
+                            <br>Vous pouvez en ajouter autant que vous voulez, elle ne sera jamais pleine.<br>
+                            Partagez vos livres et gagnez des points.
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    
+                        <a href="" class="echange"  data-dismiss="modal">Quitter</a>
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="Modale_Echangee" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Ma bibliothèque </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="isbn">
+                            {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }}
+                             vous avez au total {{ app.user.envoies|length + app.user.commandes|length }} échanges
+                            y compris les commandes et les demandes non validées et validées.
+                            <br>Maximisez vos échanges.<br>
+
+                            Consultez vos demandes, validez les, envoyez les livres et gagnez des points.
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    
+                        <a href="" class="echange"  data-dismiss="modal">Quitter</a>
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="Modale_supprimer" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Supprimer mon compte</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% set i = 0 %}
+                    {% set j = 0 %}
+                    {% set k = 0 %}
+                    {% for com in app.user.commandes %}
+                        {% if com.valider and not com.envoyer %}
+                            {% set k = k + 1  %}
+                        {% endif %}
+                    {% endfor %}
+                    {% for com in app.user.envoies %}
+                        {% if com.valider and not com.envoyer %}
+                            {% set i = i + 1  %}
+                        {% elseif not com.valider and not com.refuser and not com.envoyer %}
+                            {% set j = j + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if j == 0 and i == 0 %}
+                    <div class="modal-body">
+                        <div class="isbn">
+                            
+                                {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} Vous êtes sur le point de supprimer votre compte.<br>
+                                Cette action est irréversible. <br>
+                                {% if app.user.points > 0 %}
+                                        En supprimant votre compte, vous perdrez vos {{ app.user.points }} points.<br>
+                                        Si vous êtes sur de vouloir supprimer votre compte, vous pouvez transférer vos points à un autre 
+                                        utilisateurs avant de supprimer le compte.
+                                {% endif %}
+                                <br>
+                                {% if k>0 %}
+                                    Vous avez
+                                    {% if k > 1 %}
+                                    {{k}} commandes qui ont 
+                                    {% elseif k == 1%}
+                                    une commande qui a 
+                                    {% endif %}  
+                                    été accepté mais que vous n'avez pas confirmé la réception.<br>
+                                    Dans le cas où vous avez reçu 
+                                    {% if k > 1 %}
+                                    les livres
+                                    {% elseif k == 1%}
+                                    le livre
+                                    {% endif %} 
+                                    , vous êtes prié de confirmer la réception avant de supprimer votre compte.
+                                    
+                                {% endif %} 
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <a href="{{ path('Supprimer_mon_compte') }}" class="echange" >Confirmer la suppression </a>
+                        <a href="" class="echange"  data-dismiss="modal">Annuler</a>
+                    </div>
+                    {% else %}
+                        <div class="modal-body">
+                        <div class="isbn">
+                            {% if i == 0 and j > 0 %}
+                                {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} vous avez {{j}} demandes non valider.<br>
+                            Vous devez aller refuser vos demandes d'abord pour pouvoir supprimer votre compte.
+                            {% elseif i > 0 and j == 0 %}
+                                {{app.user.civilite}} {{app.user.prenom}} {{app.user.nom}} vous avez acceptez, {{i}} commandes que vous n'avez pas encore 
+                                livrez. <br>
+                                Vous devez d'abord les livrer ou les refuser pour avant de supprimer votre compte.
+                            {% elseif i > 0 and j > 0 %}
+                                {{app.user.civilite}} {{app.user.prenom}} {{app.user.nom}} vous avez acceptez, {{i}} commandes que vous n'avez pas encore 
+                                livrez et {{j}} demandes ni validées ni refusées <br>
+                                Vous devez d'abord refuser à toutes vos demandes pour pouvoir supprimer votre compte.
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="echange"  data-dismiss="modal">Annuler</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Modale_transfert" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Transférer des points </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% if app.user.points > 0 %}
+                        <div class="modal-body">
+                            <div class="isbn">
+                                
+                                {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} vous voulez faire un transfert de points.<br>
+                                Votres sode de point est de {{ app.user.points }} points. 
+                                <form method="post" action="{{ path('transfert_points') }}">
+                                
+                                <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Entrer l'email du destinataire</label><br>
+                                        <div class="col-sm-10">
+                                        <input type="email" name="email" class="form-control form-control-sm" id="colFormLabelSm"  required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Entrer le nombre de points</label><br>
+                                        <div class="col-sm-10">
+                                        <input type="number" name="points" min=1 max={{app.user.points}} class="form-control form-control-sm" id="colFormLabelSm"  required />
+                                        </div>
+                                    </div>  
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        <input class="gguide" type="submit" value="Confirmer le transfert" />
+                            <a href="" class="echange"  data-dismiss="modal"> Annuller</a>
+                            
+                            
+                        </div>
+                        </form>
+                    {% else %}
+                        <div class="modal-body">
+                            <div class="isbn">
+                            Votre solde de points est de 0<br> 
+                            Désolé vous ne pouvez pas faire un transfert de points.
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        
+                            <a href="" class="echange"  data-dismiss="modal"> Quitter</a>
+                            
+                        </div>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="Modale_deconnexion" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Deconnexion</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="isbn">
+                            {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} Vous êtes sur le point de vous déconnecter<br>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ path('app_logout') }}" class="echange">Confirmer la Déconnexion</a>
+                        <a href="" class="echange"  data-dismiss="modal">Annuler</a>
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Voyageee" tabindex="-1" role="dialog" aria-labelledby="AllerEnVacance" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="AllerEnVacance">Voyage</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% if app.user.vacance %}
+                        <div class="modal-body">
+                            <div class="isbn">
+                                {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} 
+                                
+                                    Vous êtes en vode voyage.<br>
+                                    En ce mode, vous ne pouvez ni commander ni demander des livre.<br>
+                                    Si vous comptez durrer à votre voyage, vous pouvez modifier votre compte, désactiver ce mode et modifier votre compte 
+                                    changer votre adresse et le mettre à votre adresse actuel jusqu'à votre retour vous le changez.
+                               
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="text-align:center">
+                            <a href="{{ path('app_retourVacances') }}" class="gguide">Désactiver le mode voyage</a>
+                            <a href="{{ path('modifier_compte') }}" class="gguide">Modifier mon compte</a>
+                            <a href="" class="gguide"  data-dismiss="modal">Quitter</a>
+                        
+                            
+                        </div>
+                    {% else %}
+                        <div class="modal-body" >
+                            <div class="isbn">
+                                {{ app.user.civilite }} {{ app.user.prenom }} {{app.user.nom }} 
+                                cette option est réservée pour les voyages.<br>
+                                Lorsque vous allez en vacance, votre adresse change. Et puisque les échanges fonctionnent 
+                                en se basant sur les adresse, il est conseillé d'activer le mode voyage lorsque vous allez en voyage.
+                                <br>Ou si vous comptez passer beaucoup de temps à votre voyage, vous pouvez ne pas activer
+                                 le mode voyage et modifier votre compte en changeant votre adresse jusqu'à votre retour.<br> 
+                               
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="text-align:center">
+                            <a href="{{ path('app_vacances') }}" class="gguide">Activer le mode voyage </a>
+                            <a href="{{ path('modifier_compte') }}" class="gguide">Modifier mon compte</a>
+                            <a href="" class="gguide"  data-dismiss="modal">Quitter</a>
+                        
+                            
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}   
+  

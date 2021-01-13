@@ -1,0 +1,107 @@
+{% if livres =='redemande' %}
+    {% if resultat %}
+        <div id = 'alert'>
+            Votre demande a bien été transmise à un autre propriétaire du livre.
+        </div>
+    {% else %} 
+        <div class = 'alert_commande'>
+            {{message}}<br>
+            Vos points vous ont été remboursés.
+        </div>
+    {% endif %}
+{% elseif livres == 'confirm' %}
+    <div id = 'alert'>
+        Vous avez confirmer avoir reçu le livre  <span class ='sty'>{{commande.livre.titre}}</span> de    <span class ='sty'>{{commande.livre.auteur.nomComplet }}</span>.<br>
+        Merci d'avoir utiliser notre site.
+    </div>
+{% elseif livres == 'supprime' %}
+    <div id = 'alert'>
+        Commande supprimer avec succès.<br>
+        Vos points vous ont été remboursés.
+    </div>
+{% endif %}
+    {% if app.user.commandes|length ==0 %}
+        <div class = 'alert_commande'>
+            Votre liste de commandes est vide.
+        </div>
+    {% else %}
+        <div class = 'alert_commande'>
+            Mes commandes.
+        </div>
+        <div class='c_ommande_t'>
+            <div class='commande_livre_t'>
+                Livre commandé
+            </div>
+            <div class='commande_info_t'>
+                Informations sur la commande
+            </div>
+            <div class='commande_options_t'>
+                Options
+            </div>
+        </div>
+        {% for com in app.user.commandes|reverse %}
+         {% if not com.supprimee %}
+            <div class='c_ommande'>
+                <div class='commande_livre'>
+                    <div class='ttitle'>
+                        <h5>{{com.livre.titre}}</h5>
+                    </div>
+                    <div class="iimage">
+                        {% if com.livre.saisie %}
+                            <img src="{{ asset('/Images/'~ com.livre.image) }}" alt="image" width="150">  
+                        {% else %}
+                            <img src="{{ com.livre.image}}" alt="image" width="150">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='commande_info'>
+                    {% if com.envoyer %}
+                        <h3>Commande reçu </h3>
+                        <div class='prop' ><span class='ti' >Date de confirmation:</span> {{ com.date }}</div>
+                         <h3>Propriétaire du livres</h3>
+                            <div class='prop' ><span class='ti' >Nom:</span> {{ com.envoyeur.prenom }} {{ com.envoyeur.nom }} </div>
+                            <div class='prop' ><span class='ti' >Adresse:</span> {{ com.envoyeur.commune.nomCommune }}</div>
+                            <div class='prop' ><span class='ti' >Contact:</span> {{ com.envoyeur.telephone }}</div>  
+                    {% else %}
+                        <div class='prop' ><span class='ti' >Date de commande:</span> {{ com.date }}</div>
+                    {% endif %}
+                       <div class='prop' ><span class='ti' >Coût:</span> {{ com.livre.nombrePoints }} Points</div>
+                
+                    {% if com.valider and not com.envoyer %}
+                            <h3>Propriétaire du livres</h3>
+                            <div class='prop' ><span class='ti' >Nom:</span> {{ com.envoyeur.prenom }} {{ com.envoyeur.nom }} </div>
+                            <div class='prop' ><span class='ti' >Adresse:</span> {{ com.envoyeur.commune.nomCommune }}</div>
+                            <div class='prop' ><span class='ti' >Contact:</span> {{ com.envoyeur.telephone }}</div>  
+                            <p>Si vous ne recevez pas le livre dans 10 à 15 jours, vous pouvez commander à nouveau le livre  ou supprimer la commande pour récupérer les points.</p>
+                    {% elseif com.refuser and not com.envoyer %}
+                        <div class='prop' ><span class='ti' >Statut:</span> La commande a été refusée. Veuillez commander le livre à nouveau ou vous supprimez la commande pour récupérer les points.</div>
+                    {% elseif not com.valider and not com.refuser and not com.envoyer %}
+                        Le propriétaire du livre n'a pas encore valider votre commande.<br>
+                        Vous pouvez redemander a nouveau le livre, supprimer la commande pour récupérer les points ou encore patienter quelques jours.
+                    {% endif %}
+                    
+                </div>
+                <div class='commande_options'>
+                    {% if com.envoyer %}
+                        Commande bien reçue 
+                    {% endif %}
+                    {% if com.valider and not com.envoyer %}
+                        <a href="{{ path('app_confirmeCom', {'id': com.id}) }}" onclick="return confirm('Confirmez si vous avez bien reçu le livre commander. Dans le cas contraire annulez. Noter bien qu'une fois que vous confirmer la commande sera considérée comme reçue. Si donc vous confirmez alors que vous n'avez pas encore reçu le livre, le livre ne sera plus envoyé et donc, vous perdrez les points.')"><h6 class='echange' >Reçue </h6></a>
+                        <a href="{{ path('app_SignalerCom', {'id': com.id}) }}"><h6 class='echange' >Redemander </h6></a>
+                        <a href="{{ path('app_SupprimerCom', {'id': com.id}) }}"><h6 class='echange_s' >Supprimer </h6></a>
+                    {% elseif com.refuser and not com.envoyer %}
+                        <a href="{{ path('app_SignalerCom', {'id': com.id}) }}"><h6 class='echange' >Redemander </h6></a>
+                        <a href="{{ path('app_SupprimerCom', {'id': com.id}) }}"><h6 class='echange_s' >Supprimer </h6></a>
+                    {% elseif not com.valider and not com.refuser and not com.envoyer %}
+                        <a href="{{ path('app_SignalerCom', {'id': com.id}) }}"><h6 class='echange' >Redemander </h6></a>
+                        <a href="{{ path('app_SupprimerCom', {'id': com.id}) }}"><h6 class='echange_s' >Supprimer </h6></a>
+                    {% endif %}  
+                </div>
+            </div> 
+         {% endif %} 
+        {% endfor %}
+    {% endif %}
+
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

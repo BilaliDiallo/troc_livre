@@ -1,0 +1,105 @@
+
+    <div class = 'alert_commande'>
+        Ma liste de  demandes.
+    </div>
+
+
+    {% if livres=='refugercommande' %}
+        <div id = 'alert'>
+            Vous avez refusé la demande. 
+        </div>     
+    {% elseif livres == 'CommandeConfirme' %}
+        <div id = 'alert'>
+            Merci d'avoir accepter la demande. Vous retrouver ci-dessous les détails sur les coordonnées du demandeur.
+            Vous êtes prier d'envoyer le livre dans les plus brèfs délaies, pour pourvoir gagner les points du livres.
+
+        </div>
+    {% elseif livres == 'réclamationacceptee' %}
+        <div id = 'alert'>
+            Votre réclamation à été pris en charge.<br>
+            Les {{ points }} du livre vous ont été accordés.
+        </div>
+    {% elseif livres == 'réclamationrefusee' %}
+        <div id = 'alert'>
+        Il faut attendre au minimum dix jours après la date de validation pour réclamer.<br>
+            Cela fait à peine {{ temps }} jours que vous avez valider la commande.<br>
+            Veuillez attendre {{ 10 - temps }} jours pour voir. 
+            <br>Si dans {{ 10 - temps }} jours vous ne recevez pas vos points, vous revenez et réclamer.
+          
+        </div>
+    {% endif %}
+        <div class='c_ommande_t'>
+            <div class='commande_livre_t'>
+                Livre commandé
+            </div>
+            <div class='commande_info_t'>
+                Informations sur la commande
+            </div>
+            <div class='commande_options_t'>
+                Options
+            </div>
+        </div>
+        {% set i=0 %}
+        {% for com in app.user.envoies|reverse %}
+            {% if not com.refuser and not com.envoyer %}
+                {% set i = i + 1 %}
+                <div class='c_ommande'>
+                    <div class='commande_livre'>
+                        <div class='ttitle'>
+                        <h5>{{com.livre.titre}}</h5>
+                    </div>
+                    <div class="iimage">
+                        {% if com.livre.saisie %}
+                            <img src="{{ asset('/Images/'~ com.livre.image) }}" alt="image" width="150">  
+                        {% else %}
+                            <img src="{{ com.livre.image}}" alt="image" width="150">
+                        {% endif %}
+                    </div>
+                    </div>
+                    <div class='commande_info'>
+                        
+                        <div class='prop' ><span class='ti' >Date de commande:</span> {{ com.date }}</div>
+                        
+                        <div class='prop' ><span class='ti' >Coût:</span> {{ com.livre.nombrePoints }} Points</div>
+                    
+                        {% if com.valider %}
+                                <h3>Information du destinateur </h3>
+                                <div class='prop' ><span class='ti' >Nom:</span> {{ com.commandeur.prenom }} {{ com.commandeur.nom }} </div>
+                                <div class='prop' ><span class='ti' >Adresse:</span> {{ com.commandeur.commune.nomCommune }}</div>
+                                <div class='prop' ><span class='ti' >Contact:</span> {{ com.commandeur.telephone }}</div>  
+                                <p>On vous prie d'envoyer le livre le plus tôt possible pour gagner les points du livre.<br>
+                                Si vous ne le faites pas dans 10 à 15 jours maximum, la commande sera annulée et renvoyée a un autre utilisateur qui possède ce livre.
+                                Vous pouvez également refuser la commande au cas où vous ne pouvez pas l'envoyée.</p>
+                        {% else %}
+                           <p> Un lecteur résidant à  <span class ='sty'>{{ com.commandeur.commune.nomCommune }}</span> souhaite recevoir votre livre.<br>
+                            Veuillez accepter la demande pour recevoir les détails sur les coordonnées du lecteur.
+                            <br>Si vous tarder à accepter la demande, elle sera annulée et envoyée à un autre utilisateur qui posséde le livre.<br>
+                            </p>
+                        {% endif %}
+                        
+                    </div>
+                    <div class='commande_options'>
+                        
+                        {% if com.valider %}
+                           
+                            <a href="{{ path('app_refuserCom', {'id': com.id}) }}"><h6 class='echange' > Refuser</h6></a>
+
+                            <a href="{{ path('reclamations', {'id': com.id}) }}"><h6 class='echange' > Réclamations points</h6></a>
+
+                        {% else %}
+                            <a href="{{ path('app_validerCom', {'id': com.id}) }}"><h6 class='echange' >Accepter </h6></a>
+                            <a href="{{ path('app_refuserCom', {'id': com.id}) }}"><h6 class='echange_s' >Refuser </h6></a>
+                        
+                        {% endif %}  
+                    </div>
+                </div>
+              {% endif %}  
+            {% endfor %}
+        {% if i == 0 %}
+            <div class='alert_commande'>
+                Vous n'avez pas de demandes.
+            </div>
+        {% endif %}
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

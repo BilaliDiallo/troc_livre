@@ -1,0 +1,12 @@
+{% if resultat %}
+    <div id = 'alert'>
+        Votre demande a bien été transmise au propriétaire du livre.<br>
+        Vous pourvez acceder a votre liste de commandes, et voir le statut de la demande.<br>
+        Si la demande n'est pas accepter dans deux à trois jours, vous pouver réactualiser la demande en cliquant sur 
+        <span class ='sty'>Redemander</span>.
+    </div>
+{% else %} 
+    <div class = 'alert_commande'>
+        {{message}}
+    </div>
+{% endif %}

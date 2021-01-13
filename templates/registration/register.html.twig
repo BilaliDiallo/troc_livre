@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1>Inscription</h1>
+<div class="isbn">
+    Il faut donner de bonnes informations.<br>
+    Dans le cas contraire, vous ne pourrez pas profiter des échanges.
+</div>
+
+    {{ form_start(registrationForm) }}
+        
+         {{ form_widget(registrationForm) }}
+        <button id="boutton" type="submit" class="btn">Valider</button>
+
+    {{ form_end(registrationForm) }}
+           
+<button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+{% endblock %}

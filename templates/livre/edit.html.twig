@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier livre{% endblock %}
+
+{% block body %}
+    <h1>Modifier le livre</h1>
+
+    {{ include('livre/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+
+    {# {{ include('livre/_delete_form.html.twig') }} #}
+{% endblock %}

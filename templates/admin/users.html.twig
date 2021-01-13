@@ -1,0 +1,96 @@
+
+
+
+
+{% if action == 'livre_Prop' %}
+    {% if users|length == 0 %}
+        <div class="alert_commande">
+            Ce livre n'a pas de propriétaire en ce moment.
+        </div>
+    {% else %}
+        <div class="alert_commande">
+           <h3>Liste des propriétaires du livre {{ livre.titre }}</h3>
+        </div>
+    {% endif %}
+{% elseif action =='nommer_admin' %}
+    <div id='alert'>
+        <h4>Vous avez ajouté {{user.prenom}} {{user.nom}} à la liste des administrateurs du site.</h4>
+    </div>
+{% elseif action =='supprimer_user' %}
+    <div id='alert'>
+        <h4>Vous avez supprimé l'utilisateur {{user.prenom}} {{user.nom}}.</h4>
+    </div>
+{% else %}
+    <div class="alert_commande">
+        <h3>Liste des utilisateurs</h3>
+    </div>
+{% endif %}
+
+
+<table class="table">
+        <thead class= 'entettt'>
+            <tr> 
+                <th></th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Numéro</th>
+                <th>Pays</th>
+                <th>Région</th>
+                <th>Departement</th>
+                <th>Commune</th>
+                <th>Points</th>
+                <th>Role</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set i = 1 %}
+    {% for user in users %}
+            {% set j = 0 %}
+            {% for role in user.getRoles %}
+                {% if role == 'ROLE_ADMIN' %}
+                    {% set j = 1%}
+                {% endif %}
+            {% endfor %}
+        <tr>
+            <th>{{ i }}</th>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.telephone }}</td>
+            <td>{{ user.pays.nomPays }}</td>
+            <td>{{ user.region.nomRegion }}</td>
+            <td>{{ user.departement.nomDepartement }}</td>
+            <td>{{ user.commune.nomCommune }}</td>
+            <td>{{ user.points }}</td>
+            <td>
+                {% if j == 1 %}
+                    Administrateur
+                {% else %}
+                    Utilisateur
+                {% endif %}
+            </td>
+            <td>
+            
+                {% if j == 1 %}
+                    <a href="{{ path('retirer_admin', {'id': user.id}) }}"><h6 class='echange' >Retirer de la liste admin</h6></a>
+                {% else %}
+                    <a href="{{ path('nommer_admin', {'id': user.id}) }}"><h6 class='echange' >Nommer admin</h6></a>
+                    <a href="{{ path('supprimer_user', {'id': user.id}) }}"><h6 class='echange_s' >Supprier</h6></a>
+                {% endif %}
+            </td>
+            
+            <td>
+        </tr>
+        {% set i = i + 1 %}
+    {% endfor %}
+     {% if i == 1 %}
+        <tr> <td></td> <td></td> <td></td><td><h1> Liste vide.</h1></td></tr>
+    {% endif %}
+    <tr class= 'entettt'> <td></td> <td></td> <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+</table>
+
+
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

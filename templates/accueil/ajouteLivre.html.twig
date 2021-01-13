@@ -1,0 +1,51 @@
+{% if error %}
+    <div class='livresTrouver'  >
+        La connection a été bloquée.<br>
+        Livre introuvable.<br>
+        Veuillez réessayer ultérieurement.<br>
+        Ou si vous disposez de toutes les informations du livre, vous pouvez l'ajouter <a href="{{ path('livre_new') }}"><span class='gguide'>ici</span></a> 
+        
+    </div>
+{% elseif livres|length != 0 %}
+    <div class='livresTrouver'  >
+        Voici les livres correspondants à votre code isbn .<br>
+        Choisissez votre livre et cliquez sur Ajouter pour l'enrégistrer dans votre bibliothèque.<br>
+        Si aucun des livres ici ne correspond au votre, réessayez de nouveau <a  href="#" onclick= "history.back()"><span class='sty'>ici</span></a>  en s'assurant que le code est correcte.<br>
+        <br>Ou encore vous pouvez cliquer <a href="{{ path('livre_new') }}"><span class='guide'>ici</span></a> et donner les informations complètes du livre.
+    </div>
+    {% for livre in livres %}
+      {% if livre.image is not null %}
+        <div class='Livres'>
+                        <div class='image_livres'>
+                                <img src="{{ livre.image}}" alt="image" width="150">
+                        </div>
+                        <div class='infos_livres'>
+                         
+                            <div class='prop' ><td><span class='ti' >Code isbn:</span> {{ livre.isbn }}</div> 
+                            <div class='prop' ><td><span class='ti' >Titre:</span> {{ livre.titre }}</div> 
+                            <div class='prop' ><td><span class='ti' >Auteur:</span> {{livre.auteur.nomComplet}}</div> 
+                            <div class='prop' ><td><span class='ti' >Catégorie:</span> {{livre.categorie.nomCategorie}}</div> 
+                            <div class='prop' ><td><span class='ti' >Langue:</span> {{ livre.langue }}</div> 
+                            <div class='prop' ><td><span class='ti' >Date de publication:</span> {{ livre.dateDePublication}}</div> 
+                            <div class='prop' ><td><span class='ti' >Nombre de pages:</span> {{ livre.nombrePages }}</div> 
+ 
+                          
+                        </div>
+                        <div class='options'>   
+                            <a href="{{ path('ajouter_livres', {'id': livre.id}) }}" onclick="return confirm('Voulez-vous ajouter ce livre dans votre bibliothèque?');"><h6 class='echange_c'> Ajouter </h6></a>
+                        </div>
+                       
+        </div>
+      {% endif %}
+    {% endfor %}
+{% else %}
+    <div class='livresTrouver'  >
+        Livre introuvable !!!<br>
+        Veuillez réessayer à nouveau <a  href="#" onclick= "history.back()"><span class='gguide'>ici</span></a>  en s'assurant que le code est correcte.<br>
+        <br>Vous pouvez également cliquer <a href="{{ path('livre_new') }}"><span class='gguide'>ici</span></a> et donner les informations complètes du livre.
+    <div>
+{% endif %}
+
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

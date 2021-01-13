@@ -1,0 +1,53 @@
+ <div class="alert_commande">
+    <h1> Liste des commandes.
+</div>
+
+<table class="table">
+        <thead class= 'entettt'>
+            <tr> 
+                <th></th>
+                <th>Livre</th>
+                <th>Photo</th>
+                <th>Demendeur</th>
+                <th>Date commande</th>
+                <th>Livreur</th>
+                <th>Date livraison</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set i = 1 %}
+            {% for com in commandes %}
+                <tr>
+                    <th>{{ i }} </th>
+                    <td>{{ com.livre.titre }}</td>
+                    <td>
+                        {% if com.livre.saisie %}
+                            <img src="{{ asset('/Images/'~ com.livre.image) }}" alt="image" width="50" height="20">  
+                        {% else %}
+                            <img src="{{ com.livre.image}}" alt="image" width="150">
+                        {% endif %}
+                    </td>
+                    <td>{{ com.commandeur.prenom}} {{com.commandeur.nom }} </td>
+                    <td>{{ com.date }}</td>
+                    <td>{{ com.envoyeur.prenom }} {{ com.envoyeur.nom }}</td>
+                    <td>
+                        {% if com.envoyer %}
+                            {{ com.livraison }}
+                        {% else %}
+                            Livre non encore livré
+                        {% endif %}
+
+                    </td>
+                </tr>
+                {% set i = i + 1 %}
+            {% endfor %}
+            {% if i == 1 %}
+                <tr> <td></td> <td><h1> Liste vide.</h1></td><td></td></tr>
+            {% endif %}
+            <tr class= 'entettt'> <tr> <td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+</table>
+
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

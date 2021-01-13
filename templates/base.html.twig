@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TrocLivres{% endblock %}</title>
+         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/bootstrap.min.css') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/style.css') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('Styles/meslivres.css') }}"></script>
+        {% block javascripts %}
+            <script src="{{ asset('Styles/jquery.min.js') }}">
+            <script src="{{ asset('Styles/bootstrap.min.js') }}">
+            <script src="{{ asset('Styles/form.js') }}"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}
+            {% for livre in livres %}
+                <div class='Livre'> <img src="{{livre.image}}" width="150"> <br>
+                {{livre.auteur}} {{livre.pages}} {{livre.titre}} {{livre.publication}} {{livre.langue}}
+            </div>
+            {% endfor %}
+        {# {{n.error}} #}
+      {# {{n.pays.nomPays}}<br>{{n.region.nomRegion}}<br>{{n.departement.nomDepartement}}<br>{{n.commune.nomCommune}}<br> #}
+          {# {% for a in test %}
+               {{a }}<br>
+                 {# {% for e in a %}
+                    <h6>{{e}}  #}
+{#                 
+         {% endfor %} 
+         <img src="{{n.image}}"/>   #} 
+   {# {{ n }} #}
+        {% endblock %}
+        
+    </body>
+</html>

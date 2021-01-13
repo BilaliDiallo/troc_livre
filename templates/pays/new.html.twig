@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NouveauLivre{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un nouveau livre</h1>
+
+    {{ include('pays/_form.html.twig') }}
+
+
+<button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précedante') }}</button>
+    {# <a id="boutton" href="#" onclick= "history.back()">Retour</a> #}
+{% endblock %}

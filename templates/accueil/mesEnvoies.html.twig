@@ -1,0 +1,56 @@
+
+
+    <div class = 'alert_commande'>
+       Mes envoies
+    </div>
+        {% set i = 0 %}
+        {% for com in app.user.envoies|reverse %}
+            {% if com.envoyer %}
+                {% set i = i + 1  %}
+                <div class='Livres'>
+                        <div class='image_livres'>
+                            {% if com.livre.saisie %}
+                                <img src="{{ asset('/Images/'~ com.livre.image) }}" alt="image" width="150">  
+                            {% else %}
+                                <img src="{{ com.livre.image}}" alt="image" width="150">
+                            {% endif %}
+                        </div>
+                        <div class='infos_livres'>
+                          
+                            <div class='prop' ><span class='ti' >Titre:</span> {{ com.livre.titre }} </div> 
+                            <div class='prop' ><span class='ti' >Auteur:</span> {{com.livre.auteur.nomComplet}} </div> 
+                            <div class='prop' ><span class='ti' >Catégorie:</span> {{com.livre.categorie.nomCategorie}} </div>  
+                            <div class='prop' ><span class='ti' >Langue:</span> {{ com.livre.langue }} </div>  
+                        
+                            <div class='prop' ><span class='ti' >Date de publication:</span> {{ com.livre.dateDePublication }} </div>  
+                            <div class='prop' ><span class='ti' >Nombre de pages:</span> {{ com.livre.nombrePages }} </div>  
+                            <div class='prop' ><span class='ti' >Nombre de points:</span> {{ com.livre.nombrePoints }} </div>  
+                        
+                        </div>
+                        <div class='options'>   
+                           Le lecteur à confirmer la réception de ce livre le {{ com.livraison }}.
+                           {% if app.user.pointsEmprunter == 0 %}
+                                vos {{com.livre.nombrePoints}} points. Vous ont été donné.
+                            {% else %}
+                                Vous aviez emprunté {{app.user.pointsEmprunter}} points.
+                                {% if app.user.pointsEmprunter < com.livre.nombrePoints  %}
+                                    Votre prêt de points a été remboursé et les {{com.livre.nombrePoints - app.user.pointsEmprunter}} points restants vous ont été donnés.
+                                {% elseif app.user.pointsEmprunter > com.livre.nombrePoints  %}
+                                    Vous avez remboursé deux points et les {{com.livre.nombrePoints - 2}} points restants vous ont été donnés.
+                                {% elseif app.user.pointsEmprunter == com.livre.nombrePoints  %}   
+                                    Votre prêt de points a été remboursé.
+                                {% endif %}
+                            {% endif %}
+            
+                        </div>
+                    </div>
+            {% endif %}
+        {% endfor %}
+    {% if i == 0 %}
+        <div class="isbn">
+            <h1 style="text-align:center;">Votre liste d'envoie est vide.</h1>
+        </div>
+    {% endif %}
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

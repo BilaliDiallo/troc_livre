@@ -1,0 +1,123 @@
+{% if action == 'form' %}
+       
+            <form class='modif_points' method="post" action="{{ path('admin_changePoints') }}">
+              
+                    
+                    <h5>Modification les points du livre {{livre.titre}}</h5>
+                   <br> <input type="hidden" name="id" value="{{livre.id}}">
+                    <div class="form-group">
+                        <label for="">Entrer le nombre de points</label>
+                        <input type="number" min = 1 max = 8 name="points" class="form-control"   required>
+                        
+                    </div>
+                    <input id="boutton" type="submit" value="Valider" onclick="return confirm('Vous êtes sur le ppoint de modifier le nombre de points de ce livre')"/>
+               <div id ='retour'>
+            <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+        </div><br><br>
+
+            </form> 
+{% elseif action == 'changePoints' %}
+       <div id='alert'>
+            <h4> Opération réussie avec succès.</h4>
+        </div>
+{% elseif action == 'delete' %}
+    {% if erreur %}
+        <div id='alert'>
+            <h4>Ce livre est en cours d'échange. Il n'est donc pas supprimé.</h4>
+        </div>
+    {% else %}
+        <div id='alert'>
+            <h4> Livre supprimé avec succès.</h4>
+        </div>
+    {% endif %}
+{% endif %}
+    <div class="alert_commande">
+        <h1>Listes des livres </h1>
+    </div>
+    
+<div class="conteneur">
+    <table class="table">
+        <thead class= 'entettt'>
+            <tr> 
+                <th></th>
+                <th>Photo de couverture</th>
+                <th>Informations</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set i = 1 %}
+        {% for livre in livres %}
+            <tr>
+                <td>{{i}}</td>
+                <td>
+                
+                    {% if livre.saisie %}
+                        <img src="{{ asset('/Images/'~ livre.image) }}" alt="image"  height="10em" >  
+                    {% else %}
+                        <img src="{{ livre.image}}" alt="image" height="10em" >
+                    {% endif %}
+                </td>
+                <td>
+                    <table >
+                        <tbody>
+                            <tr>
+                                <th>Titre</th>
+                                <td>{{ livre.titre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Auteur</th>
+                                <td>{{ livre.auteur.nomComplet }}</td>
+                            </tr>
+                            <tr>
+                                <th>Catégorie</th>
+                                <td>{{ livre.categorie.nomCategorie }}</td>
+                            </tr>
+                            <tr>
+                                <th>Date de publication</th>
+                                <td>{{ livre.dateDePublication }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de pages</th>
+                                <td>{{ livre.nombrePages }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nombre de points</th>
+                                <td>{{ livre.nombrePoints }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                
+                <td>
+                    <br><a href="{{ path('livre_proprietaires', {'id': livre.id}) }}"><h6 class='echange' >Propriétaires du livre</h6></a><br>
+                   <br> <a href="{{ path('admin_list_livre_change', {'id': livre.id}) }}"><h6 class='echange' >Modifier les points</h6></a><br>
+
+                   
+
+                   
+
+
+                   <br> <a href="{{ path('admin_delete_livre', {'id': livre.id}) }}" onclick="return confirm('Attention !!! En supprimant ce livre, toute les commandes qui lui sont commandes liées risquent d'étrer aussi supprimer.')"><h6 class='echange_s' >Supprimer</h6> </a>
+                        <br>
+                   
+
+        
+                </td>
+            </tr>
+            {% set i = i + 1 %}
+        {% else %}
+            <tr>
+                <td colspan="2">Pas de livre enrégistré </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div>
+
+
+
+
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>

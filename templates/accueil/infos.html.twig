@@ -1,0 +1,34 @@
+                    <div class='Livres'>
+                        <div class='image_livres'>
+                            {% if livre.saisie %}
+                                <img src="{{ asset('/Images/'~ livre.image) }}" alt="image" width="150">  
+                            {% else %}
+                                <img src="{{ livre.image}}" alt="image" width="150">
+                            {% endif %} 
+                        </div>
+                        <div class='infos_livres'>
+                         
+                            <div class='prop' ><span class='ti' >Titre:</span> {{ livre.titre }}</div> 
+                            <div class='prop' ><span class='ti' >Auteur:</span> {{livre.auteur.nomComplet}}</div> 
+                            <div class='prop' ><span class='ti' >Catégorie:</span> {{livre.categorie.nomCategorie}}</div> 
+                            <div class='prop' ><span class='ti' >Langue:</span> {{ livre.langue }}</div> 
+                            <div class='prop' ><span class='ti' >Date de publication:</span> {{ livre.dateDePublication }}</div> 
+                            <div class='prop' ><span class='ti' >Nombre de pages:</span> {{ livre.nombrePages }}</div> 
+                            <div class='prop' ><span class='ti' >Nombre de points:</span> {{ livre.nombrePoints }}</div> 
+                          
+                        </div>
+                        <div class='options'>   
+                           
+                            {% if livre.disponible %}
+                                <a href="{{ path('app_commander', {'id': livre.id}) }}"><h6 class='echange' >Commander</h6></a>
+                            {% else %}
+                               <h6 class='echange'>Livre en échange</h6> 
+                            {% endif %}
+                            <a href="{{ path('ajouter_livres', {'id': livre.id}) }}" onclick="return confirm('Voulez-vous ajouter ce livre dans votre bibliothèque?');"><h6 class='echange_c'> Ajouter </h6></a>                                            
+            
+                        </div>
+                       
+                    </div>
+<div id ='retour'>
+    <button id="boutton" class="btn" onclick= "history.back()">{{ button_label|default('Retour à la page précédante.') }}</button>
+</div>
